@@ -35,6 +35,7 @@
         $num_results = $result->num_rows;
         for($i=0; $i<$num_results; $i++) {
             $row = $result->fetch_assoc();
+            $timeslotid[$i] = $row['timeslotid'];
             $showdate[$i] = $row['showdate'];
             $timeslot[$i] = $row['timeslot']; 
         }
@@ -95,7 +96,7 @@
             <?php 
                 if (!empty($timeslot)){
                     for($i=0; $i<sizeof($timeslot); $i++){
-                        echo "<tr><td>".$showdate[$i]."</td><td>".$timeslot[$i]."</td></tr>";
+                        echo "<tr><td><a href='../seatSelection/index.php?timeslotid=".$timeslotid[$i]."'><span>".$showdate[$i]." ".$timeslot[$i]."</span></a></td></tr>";
                     }
                 } else {
                     echo "<tr>Upcoming...</tr>";
@@ -103,7 +104,7 @@
             ?>
             </table>
         </div>
-
+        
     </div>
 
 <?php include '../footer.php' ?>
