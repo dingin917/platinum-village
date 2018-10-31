@@ -1,0 +1,38 @@
+.main-body {
+    padding: 180px 120px;
+}
+
+
+form {
+    font-family: Arial, sans-serif;
+    width: 350px;
+    padding: 10px 30px;
+    border: 2px solid black;
+    border-radius: 4px;
+}
+
+.login {
+    padding-top: 50px;
+    float: left;
+}
+
+.register {
+    margin-left: 500px;
+}
+
+label {
+    float: left;
+    display: block;
+    width: 100px;
+    text-align: right;
+    padding-right: 30px;
+}
+
+input {
+    margin-top: 15px;
+    display: block;
+}
+
+.reset-button {
+    float: left;
+}

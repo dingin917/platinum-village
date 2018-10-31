@@ -1,0 +1,12 @@
+
+.main-body {
+    padding: 120px 50px 50px 50px;
+}
+
+.now-showing, .upcoming {
+    padding-bottom: 100px;
+}
+
+td {
+    padding-right: 40px;
+}

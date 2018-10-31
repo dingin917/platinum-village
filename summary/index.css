@@ -1,0 +1,16 @@
+.main-body {
+    padding: 120px;
+}
+
+.booking-details {
+    padding: 0 20px 20px 20px;
+}
+
+
+.booking-details ul {
+    padding-left: 150px;
+}
+
+.booking-details li {
+    padding-bottom: 5px;
+}

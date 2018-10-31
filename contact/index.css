@@ -1,0 +1,44 @@
+
+.main-body{
+    padding: 120px;
+}
+
+.cinema-info {
+    float: left;
+}
+
+.survey-block {
+    margin-left: 500px;
+}
+
+address {
+    padding-left: 50px;
+}
+
+.survey {
+    padding-left: 30px;
+}
+
+.survey label {
+    width: 100px;
+    text-align: left;
+    padding-right: 35px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.survey input {
+    margin-top: 15px;
+    width: 130px;
+    margin-bottom: 15px;
+}
+
+.survey textarea {
+    margin-top: 20px;
+    width: 245px;
+}
+
+h4 {
+    background-color: #ccced1;
+    width: 350px;
+}

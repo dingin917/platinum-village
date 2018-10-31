@@ -1,0 +1,43 @@
+
+.main-body {
+    padding: 120px;
+    margin-bottom: 100px;
+}
+
+.poster {
+    float: left;
+}
+
+.poster-img {
+    height: 270px;
+    width: 180px;
+}
+
+.ticket-info {
+    float: right;
+}
+
+.movie {
+    padding-left: 250px;
+}
+
+h3 {
+    margin-top: 0;
+}
+
+.addto-cart {
+    width: 230px;
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+.confirm, .cancel {
+    width: 110px;
+    height: 30px;
+}
+
+.cancel {
+    margin-left: 6px;
+}
+
+

@@ -1,0 +1,125 @@
+
+.logo-box {
+    float: left;
+}
+
+.logo-img {
+    width: 240px;
+    margin-top: 10px;
+}
+
+.nav-block {
+    float: right;
+}
+.nav-bar {
+    margin-right: 280px;
+    list-style-type: none;
+}
+
+.nav-member {
+    height: 35px;
+    width: 100px;
+    float: right;
+    margin-top: 35px;
+    margin-right: 30px;
+}
+
+.nav-li {
+    display: inline;
+    padding: 50px;
+    font-family: lato,san-serif;
+    font-size: 20px;
+    color: #333;
+    line-height: 140%;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:link {
+    color: #3f454f;
+}
+
+a:visited {
+    color: #3f454f;
+}
+
+a:hover {
+    color: #db8529;
+}
+
+
+
+
+
+
+
+
+
+
+footer {
+    font-size: 120%;
+    text-align: center;
+    clear: right;
+    padding: 20px;
+    background-color: #d3cec9;
+    color: black;
+}
+
+
+
+
+
+
+
+
+.movie-overview {
+    float: right;
+    padding-top: 60px;
+    margin-bottom: 30px;
+}
+
+.book-form {
+    font-family: Arial, sans-serif;
+    width: 350px;
+    padding: 10px;
+    padding-top: 170px;
+    padding-left: 30px;
+}
+
+.book-form label {
+    clear: left;
+    display: block;
+    width: 100px;
+    text-align: left;
+    padding-right: 35px;
+    margin-top: 15px;
+}
+
+.book-form input, .book-form select {
+    margin-top: 15px;
+    display: block;
+    width: 130px;
+}
+
+.movie-posters {
+    width: 900px;
+    height: 600px;
+    padding-right: 80px;
+    border: none;
+    border-collapse: collapse;
+}
+
+.movie-posters td {
+    border: none;
+}
+
+.poster {
+    height: 250px;
+}
+
+.movie-overview td {
+    width: 250px;
+    height: 350px;
+}
