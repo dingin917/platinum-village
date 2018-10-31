@@ -1,3 +1,37 @@
+<?php 
+    @ $db = new mysqli('localhost', 'f36ee', 'f36ee', 'f36ee');
+    if (mysqli_connect_errno()) {
+        echo "Error: Could not connect to database.  Please try again later.";
+        exit;
+    }
+
+    $query = "select * from showtime where timeslotid=".$_GET['timeslotid'];
+    $result = $db->query($query);
+    if (!$result) {
+        echo "An error has occurred. Cannot read showtime from database.";
+    } else {
+        $row = $result->fetch_assoc();
+        $movieid = $row['movieid'];
+        $showdate = $row['showdate'];
+        $timeslot = $row['timeslot'];
+    }
+    $result->free();
+
+    $query = "select * from movie where movieid=".$movieid;
+    $result = $db->query($query);
+    if (!$result) {
+        echo "An error has occurred. Cannot read showtime from database.";
+    } else {
+        $row = $result->fetch_assoc();
+        $name = $row['name'];
+        $poster = $row['poster'];
+    }
+    $result->free();
+
+    $db->close();
+
+?>
+
 <!DOCTYPE <!DOCTYPE html>
 <html>
 <head>
@@ -15,14 +49,14 @@
     <div class="main-body">
 
         <div class="poster">
-            <img alt="poster" class="poster-img">
+            <img alt="poster" class="poster-img" src="<?php echo '..'.$poster ?>">
         </div>
 
         <div class="ticket-info">
             <h3>Ticket Information</h3>
             <ul>
-                <li>Movie: <span></span></li>
-                <li>Date & Time: <span></span></li>
+                <li>Movie: <?php echo $name ?></li>
+                <li>Date & Time: <?php echo $showdate." ".$timeslot ?></li>
                 <li>Seat No.: <span></span></li>
                 <li>Total Amount: <span></span></li>
             </ul>
@@ -35,10 +69,10 @@
 
         <div class="movie">
             <div class="movie-info">
-                <h3>Movie Name</h3>
+                <h3><?php echo $name ?></h3>
                 <ul>
-                    <li>Hall Information: <span></span></li>
-                    <li>Date and Time: <span></span></li>
+                    <li>Hall Information: Platinum Suites</li>
+                    <li>Date and Time: <?php echo $showdate." ".$timeslot ?></li>
                 </ul>
             </div>
             <div class="selection-table">
