@@ -58,7 +58,7 @@
                             $row = $result->fetch_assoc();
                             $path = $row['poster'];
                             $name = $row['name'];
-                            echo "<td><a href='./movieDetail/index.php?movie=".$name."'><img class='poster' src='.".$path."'></a></td>";
+                            echo "<td><a href='./movieDetail/index.php?movie=".$name."'><img class='poster' src='.".$path."'></a><br><br><span>".$name."</span></td>";
                             if($i==3) echo "</tr><tr>";
                         }
                     }
