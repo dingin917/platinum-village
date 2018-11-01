@@ -15,6 +15,7 @@
 
 .ticket-info {
     float: right;
+    display: none;
 }
 
 .movie {
@@ -79,10 +80,6 @@ input[type="checkbox"]:disabled + label  {
     border-radius: 6px;
     width: fit-content;
     margin-left: 30px;
-}
-
-.seatrow {
-    margin-left: 
 }
 
 .screen {

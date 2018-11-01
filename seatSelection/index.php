@@ -71,9 +71,9 @@
                 <li>Seat No.: <span></span></li>
                 <li>Total Amount: <span></span></li>
             </ul>
-            <button type="submit" class="addto-cart">Add to cart</button>
+            <button type="submit" class="addto-cart" disabled>Add to cart</button>
             <div class="confirm-cancel">
-                <button type="submit" class="confirm">Confirm</button>
+                <button type="submit" class="confirm" disabled>Confirm</button>
                 <button type="submit" class="cancel">Cancel</button>
             </div>  
         </div>
@@ -112,13 +112,15 @@
                                 $disable = 0;
                                 continue;
                             }else {
-                                echo "<td><input type='checkbox' value='".chr($i+65).$j."' id='".chr($i+65).$j."'>";
+                                echo "<td><input type='checkbox' class='chked' value='".chr($i+65).$j."' id='".chr($i+65).$j."'>";
                                 echo "<label for='".chr($i+65).$j."'>".chr($i+65).$j."</label>";
                                 echo "</td>";
                             }
                         }
                         echo "</tr>";
                     }
+                    echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                            <script src="seat.js"></script>'
                     ?>
                     </table>
                 </div>
