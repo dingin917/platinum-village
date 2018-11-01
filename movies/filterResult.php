@@ -1,3 +1,21 @@
+<?php
+    $selected_movie = $_POST['selected-movie'];
+    $selected_genre = $_POST['selected-genre'];
+    $selected_director = $_POST['selected-director'];
+    $filter;
+    $value;
+
+    if ($selected_movie!=0) {
+        $filter = "name";
+        $value = $selected_movie;
+    } else if ($selected_genre!=0) {
+        $filter = "genre";
+        $value = $selected_genre;
+    } else {
+        $filter = "director";
+        $value = $selected_director;
+    }
+?>
 <!DOCTYPE <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +37,7 @@
                 <tr>
                 <?php 
                     include "../dbconnect.php";
-                    $query = "select * from movie where showing='nowshowing'";
+                    $query = "select * from movie where showing='nowshowing' and ".$filter."='".$value."'";
                     $result = $db->query($query);
                     if (!$result) {
                         echo "An error has occurred. Cannot read poster from database.";
