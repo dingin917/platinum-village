@@ -2,12 +2,12 @@ use f36ee;
 
 insert into movie values 
 (1, "Venom", "PG-13", 112, 7.0, "nowshowing", "Tom Hardy, Michelle Williams, Riz Ahmed, Scott Haze, Reid Scott",
-"Ruben Fleischer", "Action / Adventure", "04-10-2018", "English (Sub: Chinese)", 
+"Ruben Fleischer", "Action", "04-10-2018", "English (Sub: Chinese)", 
 "One of Marvel's most enigmatic, complex and badass characters comes to the big screen, starring Academy Award nominated actor Tom Hardy as the lethal protector Venom.", 
 "http://www.venom.movie/site/", "/database/poster/venom.jpg"),
 
 (2, "A Star Is Born", "M-18", 136, 8.4, "nowshowing", "Bradley Cooper, Lady Gaga",
-"Bradley Cooper", "Romance / Drama", "04-10-2018", "English (Sub: Chinese)", 
+"Bradley Cooper", "Romance", "04-10-2018", "English (Sub: Chinese)", 
 "A Star is Born stars four-time Oscar nominee Bradley Cooper (American Sniper, American Hustle, Silver Linings Playbook) and multiple award-winning, Oscar-nominated music superstar Lady Gaga, in her first leading role in a major motion picture. Cooper helms the drama, marking his directorial debut. In this new take on the tragic love story, he plays seasoned musician Jackson Maine, who discovers and falls in love with struggling artist Ally (Gaga). She has just about given up on her dream to make it big as a singer until Jack coaxes her into the spotlight. But even as Ally's career takes off, the personal side of their relationship is breaking down, as Jack fights an ongoing battle with his own internal demons. ", 
 "http://www.astarisbornmovie.net/", "/database/poster/astarisborn.jpg"),
 
@@ -22,7 +22,7 @@ insert into movie values
 "http://www.searching.movie/site/", "/database/poster/searching.jpg"),
 
 (5, "Johnny English Strikes Again", "PG", 89, 6.6, "nowshowing", "Rowan Atkinson, Olga Kurylenko, Ben Miller, Jake Lacy, Emma Thompson",
-"David Kerr", "Action / Comedy", "20-10-2018", "English (Sub: Chinese)", 
+"David Kerr", "Action", "20-10-2018", "English (Sub: Chinese)", 
 "Rowan Atkinson returns as the much-loved accidental secret agent in 'Johnny English Strikes Again'. When a cyber-attack reveals the identity of all active undercover agents in Britain, the country's only hope is called out of retirement. English's new mission is his most critical to date: Dive head first into action to find the mastermind hacker. A man with few skills and analogue methods, English must overcome the challenges of modern technology or his newest mission will become the Secret Service's last. ", 
 "http://www.johnnyenglishmovie.com/", "/database/poster/johnnyenglish.jpg"),
 
