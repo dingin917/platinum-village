@@ -1,6 +1,7 @@
 <?php 
     include "../dbconnect.php";
-    $query = "select * from showtime where timeslotid=".$_GET['timeslotid'];
+    $timeslotid = $_GET['timeslotid'];
+    $query = "select * from showtime where timeslotid=".$timeslotid;
     $result = $db->query($query);
     if (!$result) {
         echo "An error has occurred. Cannot read showtime from database.";
@@ -15,11 +16,26 @@
     $query = "select * from movie where movieid=".$movieid;
     $result = $db->query($query);
     if (!$result) {
-        echo "An error has occurred. Cannot read showtime from database.";
+        echo "An error has occurred. Cannot read movie from database.";
     } else {
         $row = $result->fetch_assoc();
         $name = $row['name'];
         $poster = $row['poster'];
+    }
+    $result->free();
+
+    $query = "select * from transaction where timeslotid=".$timeslotid;
+    $result = $db->query($query);
+    if (!$result) {
+        echo "An error has occurred. Cannot read transaction from database.";
+    } else {
+        $num_results = $result->num_rows;
+        for($i=0; $i<$num_results; $i++) {
+            $row = $result->fetch_assoc();
+            $seat = $row['seat'];
+            $seats = explode(',', $seat);
+            $seatsconut = count($seats);
+        }
     }
     $result->free();
 
@@ -72,17 +88,40 @@
             </div>
             <div class="selection-table">
                 <h3>Seat Selection</h3>
-                <table>
-                <?php 
-                for($i=0;$i<5;$i++) {
-                    echo "<tr>";
-                    for($j=0;$j<10;$j++){
-                        echo "<td><input type='checkbox' id='".chr($i+65).$j."'>".chr($i+65).$j."</td>";
+                <div class="seats">
+                    <hr class="screenhr">
+                    <p class="screen">
+                        Screen
+                    </p>
+                    <table>
+                    <?php 
+
+                    for($i=0;$i<5;$i++) {
+                        echo "<tr class='seatrow'>";
+                        for($j=0;$j<10;$j++){
+                            for ($l=0;$l<$seatsconut;$l++){
+                                if ($seats[$l] == chr($i+65).$j ) {
+                                    echo "<td><input type='checkbox' value='".chr($i+65).$j."' id='".chr($i+65).$j."'disabled>";
+                                    echo "<label for='".chr($i+65).$j."'>".chr($i+65).$j."</label>";
+                                    echo "</td>";
+                                    $disable = 1;
+                                    break;   
+                                }
+                            }
+                            if ($disable == 1){
+                                $disable = 0;
+                                continue;
+                            }else {
+                                echo "<td><input type='checkbox' value='".chr($i+65).$j."' id='".chr($i+65).$j."'>";
+                                echo "<label for='".chr($i+65).$j."'>".chr($i+65).$j."</label>";
+                                echo "</td>";
+                            }
+                        }
+                        echo "</tr>";
                     }
-                    echo "</tr>";
-                }
-                ?>
-                </table>
+                    ?>
+                    </table>
+                </div>
             </div>
 
         </div>
