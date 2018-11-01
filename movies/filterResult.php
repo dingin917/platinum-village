@@ -2,13 +2,11 @@
     $selected_movie = $_POST['selected-movie'];
     $selected_genre = $_POST['selected-genre'];
     $selected_director = $_POST['selected-director'];
-    $filter;
-    $value;
 
-    if ($selected_movie!=0) {
+    if ($selected_movie) {
         $filter = "name";
         $value = $selected_movie;
-    } else if ($selected_genre!=0) {
+    } else if ($selected_genre) {
         $filter = "genre";
         $value = $selected_genre;
     } else {
@@ -30,6 +28,7 @@
     <?php include "../header.php" ?>
 
     <div class="main-body">
+        <h2>Based On Your Search: Movie <?php echo ucfirst($filter)." -> ".$value; ?></h2>
 
         <div class="now-showing">
             <h3>Now Showing</h3>
@@ -73,7 +72,7 @@
                 <tr>
                 <?php 
                     include "../dbconnect.php";
-                    $query = "select * from movie where showing='upcoming'";
+                    $query = "select * from movie where showing='upcoming' and ".$filter."='".$value."'";
                     $result = $db->query($query);
                     if (!$result) {
                         echo "An error has occurred. Cannot read poster from database.";

@@ -80,8 +80,7 @@
                         for($i=0; $i<$num_results; $i++) {
                             $row = $result->fetch_assoc();
                             $name = $row['name'];
-                            $movieid = $row['movieid'];
-                            echo "<option value='".$movieid."'>".$name."</option>";
+                            echo "<option value='".$name."'>".$name."</option>";
                         }
                     }
                     $result->free();
