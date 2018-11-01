@@ -1,10 +1,5 @@
 <?php 
-    @ $db = new mysqli('localhost', 'f36ee', 'f36ee', 'f36ee');
-    if (mysqli_connect_errno()) {
-        echo "Error: Could not connect to database.  Please try again later.";
-        exit;
-    }
-
+    include "../dbconnect.php";
     $query = "select * from showtime where timeslotid=".$_GET['timeslotid'];
     $result = $db->query($query);
     if (!$result) {

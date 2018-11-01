@@ -4,13 +4,6 @@
     $email = $_POST['email'];
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $password2 = $_POST['password2'];
-
-    if ($password != $password2) {
-        echo "Sorry passwords do not match";
-        echo "<br><a href='login.php'>Back To Registration..</a>";
-	    exit;
-    }
 
     $password = md5($password);
 

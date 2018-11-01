@@ -1,9 +1,5 @@
 <?php 
-    @ $db = new mysqli('localhost', 'f36ee', 'f36ee', 'f36ee');
-    if (mysqli_connect_errno()) {
-        echo "Error: Could not connect to database.  Please try again later.";
-        exit;
-    }
+    include "../dbconnect.php";
     $query = "select * from movie where name='".$_GET['movie']."'";
     $result = $db->query($query);
     if (!$result) {
@@ -54,7 +50,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="../main.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="./index.css" />
-    <script src="index.js"></script>
 </head>
 <body>
     <?php include "../header.php" ?>

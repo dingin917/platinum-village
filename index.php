@@ -10,7 +10,6 @@
     <title>Platinum Village</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
 </head>
 <body>
     <div class="wrapper">
@@ -42,15 +41,11 @@
             <table border="1" class="movie-posters">
                 <tr>
                 <?php 
-                    @ $db = new mysqli('localhost', 'f36ee', 'f36ee', 'f36ee');
-                    if (mysqli_connect_errno()) {
-                        echo "Error: Could not connect to database.  Please try again later.";
-                        exit;
-                    }
+                    include "dbconnect.php";
                     $query = "select * from movie";
                     $result = $db->query($query);
                     if (!$result) {
-                        echo "An error has occurred. Cannot read poster from database.";
+                        echo "An error has occurred. Cannot read from movie table.";
                     } else {
                         $num_results = $result->num_rows;
                         for($i=0; $i<$num_results; $i++) {
@@ -70,19 +65,16 @@
         </div>
 
         <div class="quick-book">
-            <form class="book-form">
+            <form class="book-form" action="./movies/filterResult.php" method="post">
                 <label>Select Movie</label>
                 <select>
+                <option>select a movie</option>
                 <?php
-                    @ $db = new mysqli('localhost', 'f36ee', 'f36ee', 'f36ee');
-                    if (mysqli_connect_errno()) {
-                        echo "Error: Could not connect to database.  Please try again later.";
-                        exit;
-                    }
+                    include "dbconnect.php";
                     $query = "select * from movie where showing='nowshowing'";
                     $result = $db->query($query);
                     if (!$result) {
-                        echo "An error has occurred. Cannot read poster from database.";
+                        echo "An error has occurred. Cannot read from movie table.";
                     } else {
                         $num_results = $result->num_rows;
                         for($i=0; $i<$num_results; $i++) {
@@ -96,14 +88,49 @@
                     $db->close();
                 ?>
                 </select><br>
-                <label>Select Date</label>
-                <input type="date"><br>
-                <label>Select Time</label>
+                <label>Select Genre</label>
                 <select>
-                    <option value="time1">Time 1</option>
-                    <option value="time2">Time 2</option>
+                <option>select a category</option>
+                <?php 
+                    include "dbconnect.php";
+                    $query = "select distinct genre from movie";
+                    $result = $db->query($query);
+                    if (!$result) {
+                        echo "An error has occurred. Cannot read poster from showtime table.";
+                    } else {
+                        $num_results = $result->num_rows;
+                        for($i=0; $i<$num_results; $i++) {
+                            $row = $result->fetch_assoc();
+                            $genre = $row['genre'];
+                            echo "<option value='".$genre."'>".$genre."</option>";
+                        }
+                    }
+                    $result->free();
+                    $db->close();
+                ?>
                 </select><br>
-                <input type="submit" class="quick-book-now" value="Book Now">
+                <label>Select Date</label>
+                <select>
+                <option>select a date</option>
+                <?php 
+                    include "dbconnect.php";
+                    $query = "select distinct showdate from showtime";
+                    $result = $db->query($query);
+                    if (!$result) {
+                        echo "An error has occurred. Cannot read poster from showtime table.";
+                    } else {
+                        $num_results = $result->num_rows;
+                        for($i=0; $i<$num_results; $i++) {
+                            $row = $result->fetch_assoc();
+                            $showdate = $row['showdate'];
+                            echo "<option value='".$showdate."'>".$showdate."</option>";
+                        }
+                    }
+                    $result->free();
+                    $db->close();
+                ?>
+                </select><br>
+                <input type="submit" class="quick-book-now" value="Search Now">
             </form>  
         </div>
 
