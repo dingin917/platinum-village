@@ -34,3 +34,13 @@ create table member
     fullname char(100) not null,
     password char(100) not null
 );
+
+
+create table transaction 
+(
+    transactionid int unsigned not null auto_increment primary key,
+    timeslotid int unsigned not null,
+    memberid int unsigned,
+    seat char(100) not null,
+    transactiondate char(100) not null
+);

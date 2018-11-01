@@ -77,7 +77,19 @@
             </div>
             <div class="selection-table">
                 <h3>Seat Selection</h3>
+                <table>
+                <?php 
+                for($i=0;$i<5;$i++) {
+                    echo "<tr>";
+                    for($j=0;$j<10;$j++){
+                        echo "<td><input type='checkbox' id='".chr($i+65).$j."'>".chr($i+65).$j."</td>";
+                    }
+                    echo "</tr>";
+                }
+                ?>
+                </table>
             </div>
+
         </div>
 
     </div>
