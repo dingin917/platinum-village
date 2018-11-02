@@ -15,7 +15,11 @@
 
 .ticket-info {
     float: right;
+<<<<<<< HEAD
     /* display: none; */
+=======
+    display: none;
+>>>>>>> c37ea7fa4675d1f1035f3c399aa860eb94a5066e
 }
 
 .movie {
