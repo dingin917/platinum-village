@@ -15,7 +15,6 @@
 
 .ticket-info {
     float: right;
-    /* display: none; */
 }
 
 .movie {
@@ -75,15 +74,15 @@ input[type="checkbox"]:disabled + label  {
     background-color: gray;
 }
 
-input[name="reserved"]:disabled + label {
-    background-color: skyblue;
-}
-
 .seats {
     border: 1px solid black;
     border-radius: 6px;
     width: fit-content;
     margin-left: 30px;
+}
+
+.seatrow {
+    margin-left: 
 }
 
 .screen {
@@ -94,8 +93,4 @@ input[name="reserved"]:disabled + label {
 .screenhr {
     width: 50%;
     margin-bottom: 0;
-}
-
-#hidden {
-    display: none;
 }
