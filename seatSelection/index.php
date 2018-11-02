@@ -99,7 +99,6 @@
                 <li>Seat No.:       <span id="seatsNo"></span></li>
                 <li>Total Amount:   $ <span id="toAmount"></span></li>
             </ul>
-<<<<<<< HEAD
             
             <button type="submit" class="addto-cart" disabled>Add to cart</button>           
             <div class="confirm-cancel">
@@ -107,12 +106,6 @@
                 <button type="submit" class="confirm" disabled>Confirm</button>
             </a>
             <button type="submit" class="cancel">Cancel</button>
-=======
-            <button type="submit" class="addto-cart" disabled>Add to cart</button>
-            <div class="confirm-cancel">
-                <button type="submit" class="confirm" disabled>Confirm</button>
-                <button type="submit" class="cancel">Cancel</button>
->>>>>>> c37ea7fa4675d1f1035f3c399aa860eb94a5066e
             </div>  
         </div>
 
@@ -149,13 +142,6 @@
                             if ($disable == 1){
                                 $disable = 0;
                                 continue;
-<<<<<<< HEAD
-=======
-                            }else {
-                                echo "<td><input type='checkbox' class='chked' value='".chr($i+65).$j."' id='".chr($i+65).$j."'>";
-                                echo "<label for='".chr($i+65).$j."'>".chr($i+65).$j."</label>";
-                                echo "</td>";
->>>>>>> c37ea7fa4675d1f1035f3c399aa860eb94a5066e
                             }
                             if ($_SESSION['cart']){
                                 foreach($_SESSION['cart'] as $seat_reserved){

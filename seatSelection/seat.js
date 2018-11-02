@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 $('.chked').click(function() {
 	if ($('.chked:checked').length) {
         $('.addto-cart').removeAttr('disabled');
@@ -43,16 +42,3 @@ $('.addto-cart').click(function(){
 
 	window.location.href = "index.php?seat=" + seat + "&total_price=" +total_price + "&timeslotid=" + timeslotid;
 });
-=======
-$('.chked').change(function button() {
-	if ($('.chked:checked').length) {
-        $('.addto-cart').removeAttr('disabled');
-        $('.confirm').removeAttr('disabled');
-		$('.ticket-info').show();
-	} else {
-        $('.confirm').attr('disabled', 'disabled');
-        $('.addto-cart').attr('disabled', 'disabled');
-		$('.ticket-info').hide();
-		}
-});
->>>>>>> c37ea7fa4675d1f1035f3c399aa860eb94a5066e

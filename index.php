@@ -67,8 +67,8 @@
         <div class="quick-book">
             <form class="book-form" action="./movies/filterResult.php" method="post">
                 <label>Select Movie</label>
-                <select name="selected-movie">
-                <option value=0>select a movie</option>
+                <select>
+                <option>select a movie</option>
                 <?php
                     include "dbconnect.php";
                     $query = "select * from movie where showing='nowshowing'";
@@ -80,7 +80,8 @@
                         for($i=0; $i<$num_results; $i++) {
                             $row = $result->fetch_assoc();
                             $name = $row['name'];
-                            echo "<option value='".$name."'>".$name."</option>";
+                            $movieid = $row['movieid'];
+                            echo "<option value='".$movieid."'>".$name."</option>";
                         }
                     }
                     $result->free();
@@ -88,14 +89,14 @@
                 ?>
                 </select><br>
                 <label>Select Genre</label>
-                <select name="selected-genre">
-                <option value=0>select a category</option>
+                <select>
+                <option>select a category</option>
                 <?php 
                     include "dbconnect.php";
                     $query = "select distinct genre from movie";
                     $result = $db->query($query);
                     if (!$result) {
-                        echo "An error has occurred. Cannot read from movie table.";
+                        echo "An error has occurred. Cannot read poster from showtime table.";
                     } else {
                         $num_results = $result->num_rows;
                         for($i=0; $i<$num_results; $i++) {
@@ -108,21 +109,21 @@
                     $db->close();
                 ?>
                 </select><br>
-                <label>Select Director</label>
-                <select name="selected-director">
-                <option value=0>select a director</option>
+                <label>Select Date</label>
+                <select>
+                <option>select a date</option>
                 <?php 
                     include "dbconnect.php";
-                    $query = "select distinct director from movie";
+                    $query = "select distinct showdate from showtime";
                     $result = $db->query($query);
                     if (!$result) {
-                        echo "An error has occurred. Cannot read from movie table.";
+                        echo "An error has occurred. Cannot read poster from showtime table.";
                     } else {
                         $num_results = $result->num_rows;
                         for($i=0; $i<$num_results; $i++) {
                             $row = $result->fetch_assoc();
-                            $director = $row['director'];
-                            echo "<option value='".$director."'>".$director."</option>";
+                            $showdate = $row['showdate'];
+                            echo "<option value='".$showdate."'>".$showdate."</option>";
                         }
                     }
                     $result->free();
