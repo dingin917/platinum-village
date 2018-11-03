@@ -67,7 +67,10 @@
         exit();
 
     }
-    var_dump($_SESSION);
+
+
+    // var_dump($_SESSION);
+
 ?>
 
 <!DOCTYPE <!DOCTYPE html>
@@ -102,12 +105,13 @@
             </ul>
             
 
-            <button type="submit" id="addto-cart" onclick="add_to_cart()" disabled>Add to cart</button>           
+            <button id="addto-cart" onclick="add_to_cart()" disabled>Add to cart</button>           
             <div class="confirm-cancel">
             <a href="../cart/index.php">
-                <button type="submit" id="confirm" disabled>Confirm</button>
+                <button id="confirm">Confirm</button>
             </a>
-            <button type="submit" id="cancel">Cancel</button>
+            <a href="../movies/index.php">
+            <button id="cancel">Cancel</button></a>
             </div>  
         </div>
 
