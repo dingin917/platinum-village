@@ -44,3 +44,10 @@ create table transaction
     seat char(100) not null,
     transactiondate char(100) not null
 );
+
+create table ticket_price
+(
+    priceid int unsigned not null auto_increment primary key,
+    price float(4,2) not null,
+    update_date char(100) not null
+);

@@ -34,13 +34,35 @@
             $row = $result->fetch_assoc();
             $seat = $row['seat'];
             $seats = explode(',', $seat);
-            $seatsconut = count($seats);
+            // $seatsconut = count($seats);
         }
     }
     $result->free();
 
+    $query = "select * from ticket_price Order by priceid DESC limit 1";
+    $result = $db->query($query);
+    if (!$result) {
+        echo "An error has occurred. Cannot read ticket price from database.";
+    } else {
+        $row = $result->fetch_assoc();
+        $price = $row['price'];
+    }
+    $result->free();
     $db->close();
 
+    session_start();
+    if (!isset($_SESSION['cart'])){
+        $_SESSION['cart'] = array();
+    }
+
+    if (isset($_GET['seat'])) {
+        $seatarray = explode(",", $_GET['seat']);
+        foreach($seatarray as $seatid){
+            $_SESSION['cart'][] = $seatid;
+        }
+        header('location: ' . $_SERVER['PHP_SELF']. '?' . SID.'&timeslotid='.$timeslotid);
+        exit();
+    }
 ?>
 
 <!DOCTYPE <!DOCTYPE html>
@@ -54,7 +76,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="./index.css" />
     <script src="index.js"></script>
 </head>
-<body>
+<body onload="pageLoad()">
     <?php include "../header.php" ?>
 
     <div class="main-body">
@@ -67,14 +89,19 @@
             <h3>Ticket Information</h3>
             <ul>
                 <li>Movie: <?php echo $name ?></li>
-                <li>Date & Time: <?php echo $showdate." ".$timeslot ?></li>
-                <li>Seat No.: <span></span></li>
-                <li>Total Amount: <span></span></li>
+                <?php echo "<li id='hidden'>".$timeslotid."</li>" ?>
+                <li>Date & Time:    <?php echo $showdate." ".$timeslot ?></li>
+                <li>Ticket Price:   $ <?php echo "<span id='ticket_price'>".$price."</span>" ?></li>
+                <li>Seat No.:       <span id="seatsNo"></span></li>
+                <li>Total Amount:   $ <span id="toAmount"></span></li>
             </ul>
-            <button type="submit" class="addto-cart">Add to cart</button>
+            
+            <button type="submit" id="addto-cart" onclick="add_to_cart()" disabled>Add to cart</button>           
             <div class="confirm-cancel">
-                <button type="submit" class="confirm">Confirm</button>
-                <button type="submit" class="cancel">Cancel</button>
+            <a href="../cart/index.php">
+                <button type="submit" id="confirm" disabled>Confirm</button>
+            </a>
+            <button type="submit" id="cancel">Cancel</button>
             </div>  
         </div>
 
@@ -88,6 +115,12 @@
             </div>
             <div class="selection-table">
                 <h3>Seat Selection</h3>
+                <div class="color">
+                    <div class="foo white"></div><span>Available</span>
+                    <div class="foo gray"></div><span>Sold</span>
+                    <div class="foo skyblue"></div><span>Reserved</span>
+                    <div class="foo yellow"></div><span>Your Selection</span>
+                </div>
                 <div class="seats">
                     <hr class="screenhr">
                     <p class="screen">
@@ -99,8 +132,8 @@
                     for($i=0;$i<5;$i++) {
                         echo "<tr class='seatrow'>";
                         for($j=0;$j<10;$j++){
-                            for ($l=0;$l<$seatsconut;$l++){
-                                if ($seats[$l] == chr($i+65).$j ) {
+                            foreach ($seats as $block_seat){
+                                if ($block_seat == chr($i+65).$j ) {
                                     echo "<td><input type='checkbox' value='".chr($i+65).$j."' id='".chr($i+65).$j."'disabled>";
                                     echo "<label for='".chr($i+65).$j."'>".chr($i+65).$j."</label>";
                                     echo "</td>";
@@ -111,14 +144,31 @@
                             if ($disable == 1){
                                 $disable = 0;
                                 continue;
-                            }else {
-                                echo "<td><input type='checkbox' value='".chr($i+65).$j."' id='".chr($i+65).$j."'>";
-                                echo "<label for='".chr($i+65).$j."'>".chr($i+65).$j."</label>";
-                                echo "</td>";
                             }
+                            if ($_SESSION['cart']){
+                                foreach($_SESSION['cart'] as $seat_reserved){
+                                    if ($seat_reserved == chr($i+65).$j){
+                                        echo "<td><input type='checkbox' name='reserved' value='".chr($i+65).$j."' id='".chr($i+65).$j."'disabled>";
+                                        echo "<label for='".chr($i+65).$j."'>".chr($i+65).$j."</label>";
+                                        echo "</td>";
+                                        $disable = 1;
+                                        break; 
+                                    }
+                                }
+                                if ($disable == 1){
+                                    $disable = 0;
+                                    continue;
+                                }
+                            }
+                            echo "<td><input type='checkbox' onclick='seatClick()' class='chked' value='".chr($i+65).$j."' id='".chr($i+65).$j."'>";
+                            echo "<label for='".chr($i+65).$j."'>".chr($i+65).$j."</label>";
+                            echo "</td>";
+                            
                         }
                         echo "</tr>";
                     }
+                    // echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                            echo ' <script src="seat.js"></script>'
                     ?>
                     </table>
                 </div>
