@@ -1,6 +1,7 @@
 <?php 
     include "../dbconnect.php";
     $timeslotid = $_GET['timeslotid'];
+    $timeslotid_str = strval ($timeslotid);
     $query = "select * from showtime where timeslotid=".$timeslotid;
     $result = $db->query($query);
     if (!$result) {
@@ -57,12 +58,16 @@
 
     if (isset($_GET['seat'])) {
         $seatarray = explode(",", $_GET['seat']);
+        $arr1 = [];
+        $timeslot_str = strval($timeslotid);
         foreach($seatarray as $seatid){
-            $_SESSION['cart'][] = $seatid;
+            $_SESSION['cart'][$timeslot_str][] = $seatid;
         }
         header('location: ' . $_SERVER['PHP_SELF']. '?' . SID.'&timeslotid='.$timeslotid);
         exit();
+
     }
+    var_dump($_SESSION);
 ?>
 
 <!DOCTYPE <!DOCTYPE html>
@@ -147,15 +152,18 @@
                                 continue;
                             }
                             if ($_SESSION['cart']){
-                                foreach($_SESSION['cart'] as $seat_reserved){
-                                    if ($seat_reserved == chr($i+65).$j){
-                                        echo "<td><input type='checkbox' name='reserved' value='".chr($i+65).$j."' id='".chr($i+65).$j."'disabled>";
-                                        echo "<label for='".chr($i+65).$j."'>".chr($i+65).$j."</label>";
-                                        echo "</td>";
-                                        $disable = 1;
-                                        break; 
+                                if (array_key_exists($timeslotid_str,$_SESSION['cart'])){
+                                    foreach($_SESSION['cart'][$timeslotid_str] as $seat_reserved){
+                                        if ($seat_reserved == chr($i+65).$j){
+                                            echo "<td><input type='checkbox' name='reserved' value='".chr($i+65).$j."' id='".chr($i+65).$j."'disabled>";
+                                            echo "<label for='".chr($i+65).$j."'>".chr($i+65).$j."</label>";
+                                            echo "</td>";
+                                            $disable = 1;
+                                            break; 
+                                        }
                                     }
                                 }
+
                                 if ($disable == 1){
                                     $disable = 0;
                                     continue;
