@@ -24,6 +24,7 @@ function seatClick() {
 			total = 0;
 			total_price = total.toFixed(2);
 		}
+
 		var result = Array.from(checked);
 		var seatsresult = '';
 		for (i = 0; i < result.length; i++) {

@@ -96,6 +96,7 @@
                 <li>Total Amount:   $ <span id="toAmount"></span></li>
             </ul>
             
+
             <button type="submit" id="addto-cart" onclick="add_to_cart()" disabled>Add to cart</button>           
             <div class="confirm-cancel">
             <a href="../cart/index.php">
@@ -160,6 +161,7 @@
                                     continue;
                                 }
                             }
+
                             echo "<td><input type='checkbox' onclick='seatClick()' class='chked' value='".chr($i+65).$j."' id='".chr($i+65).$j."'>";
                             echo "<label for='".chr($i+65).$j."'>".chr($i+65).$j."</label>";
                             echo "</td>";
@@ -167,8 +169,10 @@
                         }
                         echo "</tr>";
                     }
+
                     // echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
                             echo ' <script src="seat.js"></script>'
+
                     ?>
                     </table>
                 </div>
