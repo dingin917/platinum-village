@@ -1,7 +1,7 @@
 
 .main-body {
-    padding: 120px;
-    margin-bottom: 100px;
+    padding: 120px 120px 30px 120px;
+    margin-bottom: 30px;
 }
 
 .poster {
@@ -14,8 +14,8 @@
 }
 
 .ticket-info {
-    float: right;
-    /* display: none; */
+    position: absolute;
+    right: 10%;
 }
 
 .movie {
@@ -26,18 +26,18 @@ h3 {
     margin-top: 0;
 }
 
-.addto-cart {
+#addto-cart {
     width: 230px;
     height: 30px;
     margin-bottom: 10px;
 }
 
-.confirm, .cancel {
+#confirm, #cancel {
     width: 110px;
     height: 30px;
 }
 
-.cancel {
+#cancel {
     margin-left: 6px;
 }
 
@@ -99,3 +99,32 @@ input[name="reserved"]:disabled + label {
 #hidden {
     display: none;
 }
+
+.foo {
+    width: 20px;
+    height: 20px;
+    margin: 5px 5px 0 5px;
+    border: 1px solid rgba(0, 0, 0, .2);
+    display: inline-block;
+  }
+  
+  .white {
+    background: white;
+  }
+  
+  .gray {
+    background: gray;
+  }
+  
+  .skyblue {
+    background: skyblue;
+  }
+
+  .yellow {
+      background: #ddea0f;
+  }
+
+  .color {
+    margin-left: 30px;
+    margin-bottom: 30px;
+  }

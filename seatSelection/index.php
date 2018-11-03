@@ -63,10 +63,6 @@
         header('location: ' . $_SERVER['PHP_SELF']. '?' . SID.'&timeslotid='.$timeslotid);
         exit();
     }
-    
-    var_dump($_SESSION);
-
-
 ?>
 
 <!DOCTYPE <!DOCTYPE html>
@@ -80,7 +76,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="./index.css" />
     <script src="index.js"></script>
 </head>
-<body>
+<body onload="pageLoad()">
     <?php include "../header.php" ?>
 
     <div class="main-body">
@@ -100,12 +96,13 @@
                 <li>Total Amount:   $ <span id="toAmount"></span></li>
             </ul>
             
-            <button type="submit" class="addto-cart" disabled>Add to cart</button>           
+
+            <button type="submit" id="addto-cart" onclick="add_to_cart()" disabled>Add to cart</button>           
             <div class="confirm-cancel">
             <a href="../cart/index.php">
-                <button type="submit" class="confirm" disabled>Confirm</button>
+                <button type="submit" id="confirm" disabled>Confirm</button>
             </a>
-            <button type="submit" class="cancel">Cancel</button>
+            <button type="submit" id="cancel">Cancel</button>
             </div>  
         </div>
 
@@ -119,6 +116,12 @@
             </div>
             <div class="selection-table">
                 <h3>Seat Selection</h3>
+                <div class="color">
+                    <div class="foo white"></div><span>Available</span>
+                    <div class="foo gray"></div><span>Sold</span>
+                    <div class="foo skyblue"></div><span>Reserved</span>
+                    <div class="foo yellow"></div><span>Your Selection</span>
+                </div>
                 <div class="seats">
                     <hr class="screenhr">
                     <p class="screen">
@@ -158,15 +161,18 @@
                                     continue;
                                 }
                             }
-                            echo "<td><input type='checkbox' class='chked' value='".chr($i+65).$j."' id='".chr($i+65).$j."'>";
+
+                            echo "<td><input type='checkbox' onclick='seatClick()' class='chked' value='".chr($i+65).$j."' id='".chr($i+65).$j."'>";
                             echo "<label for='".chr($i+65).$j."'>".chr($i+65).$j."</label>";
                             echo "</td>";
                             
                         }
                         echo "</tr>";
                     }
-                    echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-                            <script src="seat.js"></script>'
+
+                    // echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                            echo ' <script src="seat.js"></script>'
+
                     ?>
                     </table>
                 </div>
