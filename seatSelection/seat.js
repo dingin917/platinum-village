@@ -10,10 +10,8 @@ function seatClick() {
 	var checked = document.querySelectorAll('input[type = "checkbox"]:checked');
 	console.log(checked);
 	var addtoCart = document.getElementById('addto-cart');
-	var confirm = document.getElementById('confirm');
 	if (checked.length) {
 		addtoCart.removeAttribute('disabled');
-		confirm.removeAttribute('disabled');
 		var ticket_price = document.getElementById("ticket_price").innerHTML;
 		var ticketNo = checked.length;
 		if (ticketNo) {
@@ -36,7 +34,6 @@ function seatClick() {
 	}
 	else {
 		addtoCart.setAttribute('disabled', 'disabled');
-		confirm.setAttribute('disabled', 'disabled');
 	}
 }
 
