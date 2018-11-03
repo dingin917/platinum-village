@@ -58,16 +58,32 @@
 
     if (isset($_GET['seat'])) {
         $seatarray = explode(",", $_GET['seat']);
-        $arr1 = [];
+        
         $timeslot_str = strval($timeslotid);
         foreach($seatarray as $seatid){
             $_SESSION['cart'][$timeslot_str][] = $seatid;
         }
         header('location: ' . $_SERVER['PHP_SELF']. '?' . SID.'&timeslotid='.$timeslotid);
         exit();
-
     }
 
+    if (isset($_GET['seat_confirm'])) {
+
+        $seatarray = explode(",", $_GET['seat_confirm']);
+
+        if (empty($_GET['seat_confirm'])){
+
+            header('location: ../cart/index.php?'.SID);
+            exit();
+        }else{
+            $timeslot_str = strval($timeslotid);
+            foreach($seatarray as $seatid){
+                $_SESSION['cart'][$timeslot_str][] = $seatid;
+            }
+            header('location: ../cart/index.php?'.SID);
+            exit();
+        }
+    }
 
     // var_dump($_SESSION);
 
@@ -107,11 +123,10 @@
 
             <button id="addto-cart" onclick="add_to_cart()" disabled>Add to cart</button>           
             <div class="confirm-cancel">
-            <a href="../cart/index.php">
-                <button id="confirm">Confirm</button>
-            </a>
-            <a href="../movies/index.php">
-            <button id="cancel">Cancel</button></a>
+                <button id="confirm" onclick="confirm()">Confirm</button>        
+                <a href="../movies/index.php">
+                    <button id="cancel">Cancel</button>
+                </a>
             </div>  
         </div>
 
@@ -183,7 +198,7 @@
                     }
 
                     // echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-                            echo ' <script src="seat.js"></script>'
+                            echo ' <script src="index.js"></script>'
 
                     ?>
                     </table>
