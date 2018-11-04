@@ -31,12 +31,15 @@
         echo "An error has occurred. Cannot read transaction from database.";
     } else {
         $num_results = $result->num_rows;
+        $seat_booked = [];
         for($i=0; $i<$num_results; $i++) {
             $row = $result->fetch_assoc();
             $seat = $row['seat'];
             $seats = explode(',', $seat);
-            // $seatsconut = count($seats);
+            $seat_booked[] = $seats;
+            
         }
+
     }
     $result->free();
 
@@ -58,18 +61,32 @@
 
     if (isset($_GET['seat'])) {
         $seatarray = explode(",", $_GET['seat']);
-        $arr1 = [];
+        
         $timeslot_str = strval($timeslotid);
         foreach($seatarray as $seatid){
             $_SESSION['cart'][$timeslot_str][] = $seatid;
         }
         header('location: ' . $_SERVER['PHP_SELF']. '?' . SID.'&timeslotid='.$timeslotid);
         exit();
-
     }
 
+    if (isset($_GET['seat_confirm'])) {
 
-    // var_dump($_SESSION);
+        $seatarray = explode(",", $_GET['seat_confirm']);
+
+        if (empty($_GET['seat_confirm'])){
+
+            header('location: ../cart/index.php?'.SID);
+            exit();
+        }else{
+            $timeslot_str = strval($timeslotid);
+            foreach($seatarray as $seatid){
+                $_SESSION['cart'][$timeslot_str][] = $seatid;
+            }
+            header('location: ../cart/index.php?'.SID);
+            exit();
+        }
+    }
 
 ?>
 
@@ -107,11 +124,10 @@
 
             <button id="addto-cart" onclick="add_to_cart()" disabled>Add to cart</button>           
             <div class="confirm-cancel">
-            <a href="../cart/index.php">
-                <button id="confirm">Confirm</button>
-            </a>
-            <a href="../movies/index.php">
-            <button id="cancel">Cancel</button></a>
+                <button id="confirm" onclick="confirm()">Confirm</button>        
+                <a href="../movies/index.php">
+                    <button id="cancel">Cancel</button>
+                </a>
             </div>  
         </div>
 
@@ -142,13 +158,15 @@
                     for($i=0;$i<5;$i++) {
                         echo "<tr class='seatrow'>";
                         for($j=0;$j<10;$j++){
-                            foreach ($seats as $block_seat){
-                                if ($block_seat == chr($i+65).$j ) {
-                                    echo "<td><input type='checkbox' value='".chr($i+65).$j."' id='".chr($i+65).$j."'disabled>";
-                                    echo "<label for='".chr($i+65).$j."'>".chr($i+65).$j."</label>";
-                                    echo "</td>";
-                                    $disable = 1;
-                                    break;   
+                            foreach($seat_booked as $key => $value){
+                                foreach ($value as $key2 => $block_seat){
+                                    if ($block_seat == chr($i+65).$j ) {
+                                        echo "<td><input type='checkbox' value='".chr($i+65).$j."' id='".chr($i+65).$j."'disabled>";
+                                        echo "<label for='".chr($i+65).$j."'>".chr($i+65).$j."</label>";
+                                        echo "</td>";
+                                        $disable = 1;
+                                        break;   
+                                    }
                                 }
                             }
                             if ($disable == 1){
@@ -183,7 +201,7 @@
                     }
 
                     // echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-                            echo ' <script src="seat.js"></script>'
+                            echo ' <script src="index.js"></script>'
 
                     ?>
                     </table>

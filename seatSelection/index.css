@@ -29,6 +29,11 @@ h3 {
     width: 230px;
     height: 30px;
     margin-bottom: 10px;
+    cursor: pointer;
+}
+
+#addto-cart:disabled {
+    cursor: not-allowed;
 }
 
 #confirm, #cancel {
@@ -39,7 +44,6 @@ h3 {
 
 #cancel {
     margin-left: 6px;
-    cursor: pointer;
 }
 
 
