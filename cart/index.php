@@ -99,9 +99,7 @@
                         <?php
                         if ($_SESSION['cart']){
                             if(!isset($_SESSION['valid_user'])){
-                                echo '<a href="bought.php">
-                                        <button id="summary" onclick="popup()">Confirm</button>
-                                    </a>';
+                                echo '<button id="summary" onclick="popup()">Confirm</button>';
                             }
                             else {
                                 echo '<a href="bought.php">

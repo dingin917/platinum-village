@@ -17,6 +17,7 @@
         <h3>Review your successful booking(s)</h3>
 
         <?php 
+        $email_message = "Review your successful booking(s) with Platinum Village! ";
         foreach ($_SESSION['cart'] as $key => $id){
             if(is_array($id)){
                 $seat_select = '';
@@ -59,11 +60,35 @@
                             <tr><td class='left-col'>Seat Information:</td><td>".$seat_select."</td></tr>
                         </table>
                     </div>";
+
+                $email_message = "Movie: ".$name."; Hall: Platinum Suites; Date and Time: ".$showdate." ".$timeslot."; Seat: ".$seat_select.".";
             }
         }
+        /*
+            Send confirmation email to member 
+        */
+        $memberid = $_GET['memberid'];
+        include "../dbconnect.php";
+        $query = "select email from member where memberid=".$memberid;
+        $result = $db->query($query);
+        if (!$result) {
+            echo "An error has occurred. Cannot read from member table.";
+        } else {
+            $row = $result->fetch_assoc();
+            $email = $row['email'];
+            $subject = "Movie Ticket Confirmation Letter";
+            $headers = 'From: f36ee@localhost' . "\r\n" .
+                'Reply-To: f36ee@localhost' . "\r\n" .
+                'X-Mailer: PHP/' . phpversion();
+
+            mail($email, $subject, $email_message, $headers,'-ff36ee@localhost');
+            echo "<p>A confirmation email has been sent to your email address ".$email.".</p>";
+        }
+        $result->free();
+        $db->close();
+        
         unset($_SESSION['cart']);
         ?>
-
     </div>
 
 <?php include '../footer.php' ?>

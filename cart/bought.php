@@ -2,8 +2,10 @@
     // ini_set('display_errors',1);
     include "../dbconnect.php";
     session_start();
-    $_SESSION['cart'] = array();
-
+    // if (!isset($_SESSION['cart'])){
+    // $_SESSION['cart'] = array();
+    // }
+    // if (!isset($_SESSION['valid_user'])){
     $query = "select * from member where username ='".$_SESSION['valid_user']."'";
     $result = $db->query($query);
     if (!$result) {
@@ -13,6 +15,7 @@
         $memberid = $row['memberid'];
     }
     $result->free();
+    // }
     
     $date = date("Y-m-d");
     foreach ($_SESSION['cart'] as $key => $id){
@@ -28,6 +31,6 @@
     }
     $db->close();
     //unset($_SESSION['cart']);
-    header('location: ../summary/index.php');
+    header('location: ../summary/index.php?memberid='.$memberid);
     exit();
 ?>
