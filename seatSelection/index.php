@@ -31,12 +31,15 @@
         echo "An error has occurred. Cannot read transaction from database.";
     } else {
         $num_results = $result->num_rows;
+        $seat_booked = [];
         for($i=0; $i<$num_results; $i++) {
             $row = $result->fetch_assoc();
             $seat = $row['seat'];
             $seats = explode(',', $seat);
-            // $seatsconut = count($seats);
+            $seat_booked[] = $seats;
+            
         }
+
     }
     $result->free();
 
@@ -70,7 +73,6 @@
     if (isset($_GET['seat_confirm'])) {
 
         $seatarray = explode(",", $_GET['seat_confirm']);
-
         if (empty($_GET['seat_confirm'])){
 
             header('location: ../cart/index.php?'.SID);
@@ -84,8 +86,6 @@
             exit();
         }
     }
-
-    // var_dump($_SESSION);
 
 ?>
 
@@ -157,13 +157,15 @@
                     for($i=0;$i<5;$i++) {
                         echo "<tr class='seatrow'>";
                         for($j=0;$j<10;$j++){
-                            foreach ($seats as $block_seat){
-                                if ($block_seat == chr($i+65).$j ) {
-                                    echo "<td><input type='checkbox' value='".chr($i+65).$j."' id='".chr($i+65).$j."'disabled>";
-                                    echo "<label for='".chr($i+65).$j."'>".chr($i+65).$j."</label>";
-                                    echo "</td>";
-                                    $disable = 1;
-                                    break;   
+                            foreach($seat_booked as $key => $value){
+                                foreach ($value as $key2 => $block_seat){
+                                    if ($block_seat == chr($i+65).$j ) {
+                                        echo "<td><input type='checkbox' value='".chr($i+65).$j."' id='".chr($i+65).$j."'disabled>";
+                                        echo "<label for='".chr($i+65).$j."'>".chr($i+65).$j."</label>";
+                                        echo "</td>";
+                                        $disable = 1;
+                                        break;   
+                                    }
                                 }
                             }
                             if ($disable == 1){
