@@ -73,7 +73,6 @@
     if (isset($_GET['seat_confirm'])) {
 
         $seatarray = explode(",", $_GET['seat_confirm']);
-
         if (empty($_GET['seat_confirm'])){
 
             header('location: ../cart/index.php?'.SID);
