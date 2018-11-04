@@ -92,15 +92,22 @@
                 <tr id="confirm_part">
                     <th colspan="2" align='right'>
                         <a href="../movies/index.php">
-                            <button id="shopping">Shopping</button>
+                            <button id="shopping">Continue Shopping</button>
                         </a>
                     </th>
                     <th align='right'>
                         <?php
                         if ($_SESSION['cart']){
-                            echo '<a href="bought.php">
-                                    <button id="summary">Confirm</button>
-                                </a>';
+                            if(!isset($_SESSION['valid_user'])){
+                                echo '<a href="bought.php">
+                                        <button id="summary" onclick="popup()">Confirm</button>
+                                    </a>';
+                            }
+                            else {
+                                echo '<a href="bought.php">
+                                        <button id="summary" >Confirm</button>
+                                    </a>';
+                            }
                         }
                         else {
                             echo '<button id="summary" disabled>Confirm</button>';

@@ -24,8 +24,10 @@
             if(!$result)
                 echo "Your register query failed.";
             else 
-                echo "Welcome to Platinum Village, dear ".$username.". You are now registered.";
-                echo "<br><a href='login.php'>Move To Login Page..</a>";
+                echo "<p>Welcome to Platinum Village, dear ".$username.". You are now registered.<br>
+                        The page will be automatically re-navigated to Login Page in <span id='count'>3</span> seconds.<br>
+                        If it does not direct you to Login Page automatically, please kindly <a href='login.php'>click here</a>.</p>";
+                echo " <script type='text/javascript' src='../redirect_login.js'></script>";
         }
     }
     $result->free();

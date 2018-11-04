@@ -1,16 +1,16 @@
 .main-body {
-    padding: 120px;
+    padding: 120px 120px 120px 20%;
+    min-height: 360px;
 }
 
 .booking-details {
     padding: 0 20px 20px 20px;
 }
 
-
-.booking-details ul {
-    padding-left: 150px;
+tr >.left-col {
+    padding-right: 20px;
 }
 
-.booking-details li {
-    padding-bottom: 5px;
+tr {
+    margin-bottom: 15px;
 }

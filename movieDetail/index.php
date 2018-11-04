@@ -3,7 +3,7 @@
     $query = "select * from movie where name='".$_GET['movie']."'";
     $result = $db->query($query);
     if (!$result) {
-        echo "An error has occurred. Cannot read poster from database.";
+        echo "An error has occurred. Cannot read movie from database.";
     } else {
         $row = $result->fetch_assoc();
         $movieid = $row['movieid'];

@@ -2,23 +2,18 @@
     // ini_set('display_errors',1);
     include "../dbconnect.php";
     session_start();
-    if (!isset($_SESSION['cart'])){
-        $_SESSION['cart'] = array();
+    $_SESSION['cart'] = array();
+
+    $query = "select * from member where username ='".$_SESSION['valid_user']."'";
+    $result = $db->query($query);
+    if (!$result) {
+        echo "An error has occurred. Cannot read poster from database.";
+    } else {
+        $row = $result->fetch_assoc();
+        $memberid = $row['memberid'];
     }
-    if (isset($_SESSION['valid_user'])){
-        $query = "select * from member where username ='".$_SESSION['valid_user']."'";
-        $result = $db->query($query);
-        if (!$result) {
-            echo "An error has occurred. Cannot read poster from database.";
-        } else {
-            $row = $result->fetch_assoc();
-            $memberid = $row['memberid'];
-        }
-        $result->free();
-    }
-    else {
-        $memberid = NULL;
-    }
+    $result->free();
+    
     $date = date("Y-m-d");
     foreach ($_SESSION['cart'] as $key => $id){
         if(is_array($id)){
@@ -32,7 +27,7 @@
         }  
     }
     $db->close();
-    unset($_SESSION['cart']);
+    //unset($_SESSION['cart']);
     header('location: ../summary/index.php');
     exit();
 ?>
