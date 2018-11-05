@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="../main.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="./index.css" />
-    <script src="index.js"></script>
+    <script type= "text/javascript" src="../validation.js"></script>
 </head>
 <body>
     <?php include "../header.php" ?>
@@ -27,15 +27,16 @@
         <div class="survey-block">
             <h4>Any immediate feedback or enquiry?<br>
             Drop us your comment here?</h4>
-            <form class="survey">
+            <form class="survey" method="post" action="feedback.php">
                 <label>Your name: </label>
-                <input type="text"><br>
+                <input type="text" name='customer' id='customer' required><br>
                 <label>Your email: </label>
-                <input type="email"><br>
+                <input type="email" name='email' id='email' required><br>
                 <label>Your comment: </label><br>
-                <textarea></textarea><br>
-                <input type="submit" value="Submit">
+                <textarea name='comment' required></textarea><br>
+                <input type="submit" value="Submit" onclick=infoPopup()>
             </form>
+            <script type = "text/javascript" src = "index.js"></script>
         </div>
 
     </div>

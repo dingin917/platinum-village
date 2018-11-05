@@ -51,3 +51,11 @@ create table ticket_price
     price float(4,2) not null,
     update_date char(100) not null
 );
+
+create table feedback
+(
+    feedbackid int unsigned not null auto_increment primary key,
+    customer char(100) not null,
+    email char(100) not null,
+    comment TEXT not null
+);
