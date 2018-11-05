@@ -36,35 +36,7 @@
     </div>
 
     <div class="main-body">
-
-        <div class="movie-overview">
-            <table border="1" class="movie-posters">
-                <tr>
-                <?php 
-                    include "dbconnect.php";
-                    $query = "select * from movie";
-                    $result = $db->query($query);
-                    if (!$result) {
-                        echo "An error has occurred. Cannot read from movie table.";
-                    } else {
-                        $num_results = $result->num_rows;
-                        for($i=0; $i<$num_results; $i++) {
-                            if($i>7) break;
-                            $row = $result->fetch_assoc();
-                            $path = $row['poster'];
-                            $name = $row['name'];
-                            echo "<td><a href='./movieDetail/index.php?movie=".$name."'><img class='poster' src='.".$path."'></a><br><br><span>".$name."</span></td>";
-                            if($i==3) echo "</tr><tr>";
-                        }
-                    }
-                    $result->free();
-                    $db->close();
-                ?>
-                </tr>
-            </table>
-        </div>
-
-        <div class="quick-book">
+    <div class="quick-book">
             <form class="book-form" action="./movies/filterResult.php" method="post">
                 <label>Select Movie</label>
                 <select name="selected-movie">
@@ -132,7 +104,32 @@
                 <input type="submit" class="quick-book-now" value="Search Now">
             </form>  
         </div>
-
+        <div class="movie-overview">
+            <table border="1" class="movie-posters">
+                <tr>
+                <?php 
+                    include "dbconnect.php";
+                    $query = "select * from movie";
+                    $result = $db->query($query);
+                    if (!$result) {
+                        echo "An error has occurred. Cannot read from movie table.";
+                    } else {
+                        $num_results = $result->num_rows;
+                        for($i=0; $i<$num_results; $i++) {
+                            if($i>7) break;
+                            $row = $result->fetch_assoc();
+                            $path = $row['poster'];
+                            $name = $row['name'];
+                            echo "<td><a href='./movieDetail/index.php?movie=".$name."'><img class='poster' src='.".$path."'></a><br><br><span>".$name."</span></td>";
+                            if($i==3) echo "</tr><tr>";
+                        }
+                    }
+                    $result->free();
+                    $db->close();
+                ?>
+                </tr>
+            </table>
+        </div>
     </div>
 
 <?php include 'footer.php' ?>

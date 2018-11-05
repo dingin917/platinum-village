@@ -3,7 +3,7 @@ body{
 }
 
 .logo-box {
-    float: left;
+    position: absolute;
 }
 
 .logo-img {
@@ -12,11 +12,14 @@ body{
 }
 
 .nav-block {
-    float: right;
+    margin-left: 20%;
+    min-width: 700px;
+    position: absolute;
 }
 .nav-bar {
     margin-right: 280px;
     list-style-type: none;
+    min-width: 700px;
 }
 
 .nav-member {
@@ -25,6 +28,7 @@ body{
     float: right;
     margin-top: 35px;
     margin-right: 30px;
+    cursor: pointer;
 }
 
 .nav-li {
@@ -78,21 +82,27 @@ footer {
 
 
 
-
+.quick-book {
+    float: left;
+    position: absolute;
+    margin-top: 170px;
+    margin-left: 3%;
+    border: 1px lightgrey solid;
+    border-radius: 25px;
+    background: #efefef;
+}
 
 
 .movie-overview {
-    float: right;
-    padding-top: 60px;
+    margin-top: 170px;
     margin-bottom: 30px;
+    display: inline-block;
+    margin-left: 25%;
 }
 
 .book-form {
     font-family: Arial, sans-serif;
-    width: 350px;
-    padding: 10px;
-    padding-top: 170px;
-    padding-left: 30px;
+    padding: 17px;
 }
 
 .book-form label {
