@@ -1,34 +1,62 @@
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
 body{
     margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #f9cf63;
+}
+
+header{
+    height: 77px;
+    position: fixed;
+    background: #7e0d09;
+    width: 100%;
+    z-index: 9999;
 }
 
 .logo-box {
-    position: absolute;
+    width: 15%;
+    float: left;
 }
 
 .logo-img {
     width: 240px;
-    margin-top: 10px;
 }
 
 .nav-block {
-    margin-left: 20%;
+    margin-left: 7%;
     min-width: 700px;
-    position: absolute;
+    display: inline-block;
+    width: 78%;
 }
 .nav-bar {
     margin-right: 280px;
     list-style-type: none;
     min-width: 700px;
+    margin-top: 25px;
 }
 
 .nav-member {
     height: 35px;
     width: 100px;
     float: right;
-    margin-top: 35px;
+    margin-top: 25px;
     margin-right: 30px;
     cursor: pointer;
+    background: silver;
+}
+
+.nav-member-text{
+    height: 35px;
+    width: 100px;
+    float: right;
+    margin-top: 25px;
+    margin-right: 30px;
+    color: white;
 }
 
 .nav-li {
@@ -45,15 +73,23 @@ a {
 }
 
 a:link {
-    color: #3f454f;
+    color: #7f0b01;
+}
+
+.nav-bar a:link {
+    color: #ecae3b;
 }
 
 a:visited {
-    color: #3f454f;
+    color: #7f0b01;
 }
 
-a:hover {
-    color: #db8529;
+.nav-bar a:visited {
+    color: #ecae3b;
+}
+
+a :hover {
+    color: #f9cf63;
 }
 
 
@@ -70,39 +106,47 @@ footer {
     text-align: center;
     clear: right;
     padding: 20px;
-    background-color: #d3cec9;
-    color: black;
-    position: relative;
+    background-color: #7f0b01;
+    color: white;
+    position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
 }
 
-
-
-
+.main-body{
+    background: #f9cf63;
+    /* min-height: 100vh; */
+}
+.body-wrapper{
+    min-height: 100%;
+    position: relative;
+}
 
 .quick-book {
     float: left;
-    position: absolute;
     margin-top: 170px;
-    margin-left: 3%;
-    border: 1px lightgrey solid;
-    border-radius: 25px;
-    background: #efefef;
+    padding-left: 3%;
+    width: 15%;
 }
 
 
 .movie-overview {
     margin-top: 170px;
-    margin-bottom: 30px;
+    padding-bottom: 90px;
     display: inline-block;
-    margin-left: 25%;
+    margin-left: 7%;
+    width: 75%;
 }
 
 .book-form {
     font-family: Arial, sans-serif;
     padding: 17px;
+    border: 4px #ffffff solid;
+    border-radius: 25px;
+    background-image: linear-gradient(#ffaca5,#7f0b01);
+    color: white;
+
 }
 
 .book-form label {

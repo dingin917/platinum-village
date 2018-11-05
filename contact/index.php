@@ -18,15 +18,16 @@
 
         <div class="cinema-info">
             <ul>
-                <li>Our Address: <Address>38 Nanyang Crescent, 636866</Address></li>
-                <li>Contact Number: <Address>+65 6700 0076</Address></li>
-                <li>Email: <Address>contactus@platinumvillage.com</Address></li>
+                <li>Our Address: <Address>38 Nanyang Crescent, 636866</Address></li><br>
+                <li>Contact Number: <Address>+65 6700 0076</Address></li><br>
+                <li>Email: <Address>contactus@platinumvillage.com</Address></li><br>
                 <li>Office Operating Hours: <Address>09:00 to 18:00 Mon to Fri</Address></li>
             </ul>
         </div>
         <div class="survey-block">
-            <h4>Any immediate feedback or enquiry?<br>
-            Drop us your comment here?</h4>
+            <p>Any immediate feedback or enquiry?</p>
+            <p>Drop us your comment here?</p>
+            <br>
             <form class="survey" method="post" action="feedback.php">
                 <label>Your name: </label>
                 <input type="text" name='customer' id='customer' required><br>

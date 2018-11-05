@@ -55,7 +55,6 @@
     <?php include "../header.php" ?>
 
     <div class="main-body">
-
         <div class="movie-detail">
            <h3 class="movie-name"><?php echo $name ?></h3>
            <div class="movie-poster">

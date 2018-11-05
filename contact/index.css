@@ -5,10 +5,21 @@
 
 .cinema-info {
     float: left;
+    padding: 17px;
+    border: 4px #ffffff solid;
+    border-radius: 25px;
+    background-image: linear-gradient(#ffaca5,#7f0b01);
+    color: white;
 }
 
 .survey-block {
+    width: fit-content;
     margin-left: 500px;
+    padding: 17px;
+    border: 4px #ffffff solid;
+    border-radius: 25px;
+    background-image: linear-gradient(#ffaca5,#7f0b01);
+    color: white;
 }
 
 address {
@@ -39,6 +50,6 @@ address {
 }
 
 h4 {
-    background-color: #ccced1;
+
     width: 350px;
 }

@@ -2,6 +2,7 @@
     session_start();
     $username = $_SESSION['valid_user'];
 ?>
+<div class="body-wrapper">
     <div class="wrapper">
         <header>
             <div class="logo-box">
@@ -13,7 +14,7 @@
                 <?php endif; ?>
                 <?php if(isset($_SESSION['valid_user'])): ?>
                     <button type='button' class='nav-member' onclick="location.href='../membership/logout.php'">Logout</button>
-                    <p class='nav-member'>Welcome back, dear <?php echo $_SESSION['valid_user'] ?>!</p>
+                    <p class='nav-member-text'>Welcome back, dear <?php echo $_SESSION['valid_user'] ?>!</p>
                 <?php endif; ?>
                 <ul class="nav-bar">
                     <li class="nav-li"><a href="../index.php">Home</a></li>
