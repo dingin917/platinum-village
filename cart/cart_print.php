@@ -1,7 +1,7 @@
 <?php 
 
     if (!($_SESSION['cart'])){
-        echo "<tr><td colspan='3' id='nothing'>Nothing</td></tr>";
+        echo "<tr><td colspan='3' id='nothing'>Empty!</td></tr>";
     }
     else{
         $total_amount;
