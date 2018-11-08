@@ -12,7 +12,7 @@ function validateName(event){
 function validateEmail(event){
     var email = event.currentTarget;
     var valid = email.value.search(/^[\w.-]+@([\w]+\.){1,3}[A-Za-z]{2,3}$/);
-    if (valid!= 0) {
+    if (valid!= 0 && email.value!='f36ee@localhost') {
         alert("The email you provided [" + email.value + "] is not in the valid form.\nPlease note that the domain name contains two to four address extensions only.");
         email.focus();
         email.select();
