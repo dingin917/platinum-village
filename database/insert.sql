@@ -56,7 +56,7 @@ insert into showtime values
 (10,5,"2018-11-02","10:30");
 
 insert into member values
-(1, 'Jennie', 'jennieee.ting@gmail.com', 'Jennie Ting', md5('f36ee'));
+(1, 'Jennie', 'f36ee@localhost', 'Jennie Ting', md5('f36ee'));
 
 insert into ticket_price values 
 (NULL, 12.5, '2018-11-04');
