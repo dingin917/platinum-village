@@ -58,13 +58,13 @@ th{
 
 .remove_button{
     width: 110px;
-    height: 30px;
+    height: 40px;
     cursor: pointer;
 }
 
 .remove_all_button{
     width: 110px;
-    height: 30px;
+    height: 40px;
     cursor: pointer;
 }
 
@@ -78,13 +78,13 @@ th{
 
 #shopping {
     width: 110px;
-    height: 30px;
+    height: 40px;
     cursor: pointer;
 }
 
 #summary {
     width: 110px;
-    height: 30px;
+    height: 40px;
     cursor: pointer;
 }
 

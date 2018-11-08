@@ -17,7 +17,7 @@
 }
 
 .movie {
-    padding-left: 250px;
+    padding-left: 25%;
 }
 
 h3 {
@@ -88,7 +88,7 @@ input[name="reserved"]:disabled + label {
     border: 1px solid black;
     border-radius: 6px;
     width: fit-content;
-    margin-left: 30px;
+    /* margin-left: 30px; */
 }
 
 .screen {
